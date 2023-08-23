@@ -1,24 +1,9 @@
 import React, { createContext, Dispatch, ReactElement, SetStateAction, useState } from "react"
-import { IOptions } from "../Options"
+import { IDatePickerContext, IOptions, Views } from "../Options"
 import defaultOptions from "../Options"
 import { getFormattedDate as formatDate } from "../Utils/date"
 
-interface IDatePickerContext {
-	options: IOptions
-	view: Views
-	setView: Dispatch<SetStateAction<Views>>
-	show: boolean
-	setShow: (show: boolean) => void
-	selectedDate: Date
-	changeSelectedDate: (action: "prev" | "next" | "date" | "today", date: Date) => void
-	showSelectedDate: boolean
-	setShowSelectedDate: Dispatch<SetStateAction<boolean>>
-	selectedMonth: number
-	selectedYear: number
-	getFormattedDate: (date: Date | number, formatOptions?: Intl.DateTimeFormatOptions | null | undefined) => string
-}
-
-export type Views = "days" | "months" | "years" | "decades"
+export {  Views } from "../Options"
 
 export const DatePickerContext = createContext<IDatePickerContext>({
 	options: defaultOptions,

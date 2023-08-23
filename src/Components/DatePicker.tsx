@@ -18,7 +18,7 @@ export interface IDatePickerProps {
 const DatePicker = ({ children, options, onChange, classNames, show, setShow, selectedDateState }: IDatePickerProps) => (
 	<div className={twMerge("w-full", classNames)}>
 		<DatePickerProvider options={options} onChange={onChange} show={show} setShow={setShow} selectedDateState={selectedDateState}>
-			<DatePickerMain options={options}>{children}</DatePickerMain>
+			<DatePickerMain options={options}>{children as any}</DatePickerMain>
 		</DatePickerProvider>
 	</div>
 )

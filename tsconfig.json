@@ -11,9 +11,15 @@
 		"skipLibCheck": true,
 		"forceConsistentCasingInFileNames": true,
 		"outDir": "package/dist",
-		"declarationDir": "package/types",
+		// "declarationDir": "package/types",
 		"declaration": true,
-		"emitDeclarationOnly": true
+		"emitDeclarationOnly": true,
+		"outFile": "types/index.d.ts",
+		"lib": [
+			"DOM",
+			"ES2020",
+			"ESNext"
+			],
 	},
 	"include": ["src/**/*"],
 	"exclude": ["package/dist/**/*"]

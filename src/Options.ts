@@ -1,5 +1,21 @@
-import { ReactElement } from "react"
+import { Dispatch, ReactElement, ReactNode, SetStateAction } from "react"
 
+export type Views = "days" | "months" | "years" | "decades"
+
+export interface IDatePickerContext {
+	options: IOptions
+	view: Views
+	setView: Dispatch<SetStateAction<Views>>
+	show: boolean
+	setShow: (show: boolean) => void
+	selectedDate: Date
+	changeSelectedDate: (action: "prev" | "next" | "date" | "today", date: Date) => void
+	showSelectedDate: boolean
+	setShowSelectedDate: Dispatch<SetStateAction<boolean>>
+	selectedMonth: number
+	selectedYear: number
+	getFormattedDate: (date: Date | number, formatOptions?: Intl.DateTimeFormatOptions | null | undefined) => string
+}
 interface ITheme {
 	background: string
 	todayBtn: string
@@ -36,6 +52,7 @@ export interface IOptions {
 	inputNameProp?: string
 	inputIdProp?: string
 	inputPlaceholderProp?: string
+	renderFooter?: (props: IDatePickerContext) => ReactNode
 	inputDateFormatProp?: Intl.DateTimeFormatOptions
 }
 
@@ -67,7 +84,7 @@ const options: IOptions = {
 		day: "numeric",
 		month: "long",
 		year: "numeric",
-	}
+	},
 }
 
 export default options
